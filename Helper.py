@@ -4,6 +4,7 @@ import time
 
 #directory of all the data
 dir = 'data'
+fieldnames = ['type', 'n', 'time(ms)']
 
 #hardcoded a matrix
 a = [[2,0,-1,6],
@@ -34,7 +35,7 @@ def record_Runtime(name, matrix_func, a, b, isPrinted):
     final_time = (end_time - start_time)*1000
 
     #log the time
-    appendTime([name, len(a), f"{final_time:.5f} ms"])
+    appendTime({'type':name, 'n':len(a), 'time(ms)':final_time})
 
     #print output to terminal
     if isPrinted:
@@ -43,16 +44,19 @@ def record_Runtime(name, matrix_func, a, b, isPrinted):
             print(row)
         print("\n")
 
-#appends a row with [n, time] to a file 
+#appends a row with {type: name, n:n, time(ms):time} to a file 
 #name is the name of the file
 def appendTime(row): 
     #make the dir if it DNE
     if (not os.path.exists(dir)):
          os.mkdir(dir)
+         with open(os.path.join('data', 'data.csv'), 'w') as file:
+             writer = csv.DictWriter(file, fieldnames=fieldnames)
+             writer.writeheader()
 
     #append
     with open(os.path.join('data', 'data.csv'), 'a', newline='') as file:
-            writer = csv.writer(file, delimiter=',')
+            writer = csv.DictWriter(file, delimiter=',', fieldnames=fieldnames)
             writer.writerow(row)
 
 #prints matrix a and b and their size

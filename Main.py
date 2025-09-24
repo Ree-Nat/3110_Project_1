@@ -15,7 +15,7 @@ def main():
     #remember to delete or unstage the data dir and files before commiting to github
 
     #data collection code
-    #"""
+    """
     for i in range(p):
         a = Helper.createMatrix(2**i)
         b = Helper.createMatrix(2**i)
@@ -26,7 +26,7 @@ def main():
             matrixMultiplication(a, b, False)
 
         i = 2**i
-    #"""
+    """
 
 #run each program with matrixes a and b
 #prints the outputs when isPrinted is set to true

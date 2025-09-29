@@ -8,7 +8,7 @@ Matrix = List[List[int]]
 
 #directory of all the data
 dir = 'data'
-fieldnames = ['type', 'n', 'time(ms)']
+fieldnames = ['n', 'time(ms)']
 
 # Matrix Generators
 def createMatrix(n: int, low: int = -10, high: int = 10) -> Matrix:
@@ -80,7 +80,7 @@ def record_Runtime(name, matrix_func, a, b, isPrinted):
     final_time = (end_time - start_time)*1000
 
     #log the time
-    appendTime({'type':name, 'n':len(a), 'time(ms)':final_time})
+    appendTime(name, {'n':len(a), 'time(ms)':final_time})
 
     #print output to terminal
     if isPrinted:
@@ -91,16 +91,18 @@ def record_Runtime(name, matrix_func, a, b, isPrinted):
 
 #appends a row with {type: name, n:n, time(ms):time} to a file 
 #name is the name of the file
-def appendTime(row): 
+def appendTime(name, row): 
     #make the dir if it DNE
     if (not os.path.exists(dir)):
          os.mkdir(dir)
-         with open(os.path.join('data', 'data.csv'), 'w') as file:
+    
+    if (not os.path.exists(os.path.join('data', name+'.csv'))):
+         with open(os.path.join('data', name+'.csv'), 'w') as file:
              writer = csv.DictWriter(file, fieldnames=fieldnames)
              writer.writeheader()
 
     #append
-    with open(os.path.join('data', 'data.csv'), 'a', newline='') as file:
+    with open(os.path.join('data', name+'.csv'), 'a', newline='') as file:
             writer = csv.DictWriter(file, delimiter=',', fieldnames=fieldnames)
             writer.writerow(row)
 

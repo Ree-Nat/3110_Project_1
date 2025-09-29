@@ -3,7 +3,7 @@ import ClassicalMatrix
 import NaiveMatrix
 import StrassenMatrix
 
-p = 10 #n = 2**p = problem size; change this value to change the problem size for data collection
+p = 9 #n = 2**p = problem size; change this value to change the problem size for data collection
 printTimes = 0 #the number of times we want a printed output to the terminal in large scale data collection
 #do not make printTimes too big, the size of the matrix will be 2**printTimes big
 

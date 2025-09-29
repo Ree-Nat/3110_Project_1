@@ -38,7 +38,7 @@ def matrixMultiplication(a, b, isPrinted):
     #name of file, function, function parameters
     Helper.record_Runtime("Naive", NaiveMatrix.dac_multiply, a, b, isPrinted)
     Helper.record_Runtime("Classic", ClassicalMatrix.classic, a, b, isPrinted)
-    #Helper.record_Runtime("Strassen", StrassenMatrix.functionNameHere, a, b, isPrinted)
+    Helper.record_Runtime("Strassen", StrassenMatrix.strassen, a, b, isPrinted)
     
 #test the code with 2 hard coded matrix and 2 randomly generated ones
 def testCode():

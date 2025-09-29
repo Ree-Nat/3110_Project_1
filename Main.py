@@ -3,30 +3,34 @@ import ClassicalMatrix
 import NaiveMatrix
 import StrassenMatrix
 
-p = 8 #n = 2**p = problem size; change this value to change the problem size for data collection
-printTimes = 5 #the number of times we want a printed output to the terminal in large scale data collection
+p = 10 #n = 2**p = problem size; change this value to change the problem size for data collection
+printTimes = 0 #the number of times we want a printed output to the terminal in large scale data collection
 #do not make printTimes too big, the size of the matrix will be 2**printTimes big
 
 def main():
 
     #Test Code to run your programs; 
     #edit method if neccesary to call your method
-    testCode()
+    #testCode()
     #remember to delete or unstage the data dir and files before commiting to github
 
     #data collection code
-    """
-    for i in range(p):
-        a = createMatrix(2**i)
-        b = createMatrix(2**i)
+
+    print("Starting...")
+    
+    for i in range(p+1):
+        c = createMatrix(2**i)
+        d = createMatrix(2**i)
 
         if (i<printTimes): #only prints up to printTimes into the console
-            matrixMultiplication(a, b, True)
+            matrixMultiplication(c, d, True)
         else:
-            matrixMultiplication(a, b, False)
+            matrixMultiplication(c, d, False)
 
-        i = 2**i
-    """
+        i =+ 1
+
+    print("Finished!")
+    
 
 #run each program with matrixes a and b
 #prints the outputs when isPrinted is set to true
